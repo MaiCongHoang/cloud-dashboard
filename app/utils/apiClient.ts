@@ -161,29 +161,25 @@ export function getActiveBackendUrl(): string {
 /**
  * Health check tất cả backends
  */
-
 export async function checkAllBackendsHealth(): Promise<{ url: string; healthy: boolean }[]> {
   const results = await Promise.all(
     BACKEND_URLS.map(async (url) => {
       try {
-        const response = await fetchWithTimeout(`${url}/post`, {}, 8000);
+        const response = await fetchWithTimeout(`${url}/`, {}, 3000);
         const healthy = response.ok;
-
         if (healthy) {
           markBackendHealthy(url);
         } else {
           markBackendUnhealthy(url);
         }
-
         return { url, healthy };
-      } catch (error) {
+      } catch {
         markBackendUnhealthy(url);
-        console.warn(`Health check thất bại: ${url}`, error);
         return { url, healthy: false };
       }
     })
   );
-
+  
   console.log('🏥 Backend Health Check:', results);
   return results;
 }

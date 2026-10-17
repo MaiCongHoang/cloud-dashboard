@@ -8,8 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +21,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
 }
 
 /* Custom Animations */
@@ -68,29 +67,45 @@ body {
   }
 }
 
-@keyframes pulse-soft {
+@keyframes float {
   0%, 100% {
-    opacity: 1;
+    transform: translateY(0px) rotate(0deg);
   }
   50% {
-    opacity: 0.7;
+    transform: translateY(-8px) rotate(1.5deg);
   }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-out forwards;
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.03);
+  }
 }
 
-.animate-slideUp {
-  animation: slideUp 0.4s ease-out forwards;
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
 }
 
-.animate-slideDown {
-  animation: slideDown 0.3s ease-out forwards;
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }
 
-.animate-scaleIn {
-  animation: scaleIn 0.3s ease-out forwards;
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
 }
 
 /* Line clamp utilities */
@@ -115,21 +130,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f8fafc;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #bae6fd 0%, #38bdf8 100%);
+  background: linear-gradient(180deg, #cbd5e1 0%, #a855f7 50%, #6366f1 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #7dd3fc 0%, #0ea5e9 100%);
+  background: linear-gradient(180deg, #94a3b8 0%, #9333ea 50%, #4f46e5 100%);
 }
 
 /* Selection color */
 ::selection {
-  background: #bae6fd;
-  color: #0c4a6e;
+  background: #fef3c7;
+  color: #451a03;
 }

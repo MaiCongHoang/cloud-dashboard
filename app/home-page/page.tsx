@@ -165,7 +165,7 @@ export default function HomePage() {
                 </h1>
                 <button
                     onClick={() => setShowAddModal(true)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+                    className="flex items-center gap-2 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 hover:from-slate-800 hover:via-purple-950 hover:to-indigo-950 text-amber-200 hover:text-amber-100 px-5 py-2.5 rounded-xl font-semibold tracking-wide border border-amber-400/30 shadow-md shadow-slate-900/15 hover:shadow-xl hover:shadow-indigo-950/25 hover:-translate-y-0.5 transition-all"
                 >
                     Thêm mới
                 </button>
